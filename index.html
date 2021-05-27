@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="asistente.css" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="bootstrap.css"> -->
+    <script src="asis.js"></script>
+    <title>Liquidacion de Magistrados</title>
+</head>
+<body>
+<div class="header" style="padding: 10px;">
+    <h1>Liquidador de Magistrados</h1>
+    <h3>Dirección de Trámites Complejos - Unidad de Atención Trámites Centralizados</h3>
+</div>
+<div class="col-12">
+    <h4 class="títuloSección">
+        Información preliminar
+    </h4>
+        <input type="text" class="col-4" id="titular" placeholder="Ingrese nombre y apellido del titular" style="text-align: left; margin-right: 5px; font-size:medium; text-transform: uppercase;">
+        <input type="text" class="col-3" id="expediente" placeholder="Ingrese nro de expediente" style="text-align: left; margin-right: 5px; font-size: medium;" onkeypress="formatoExpediente()" onkeyup="autoTab('expediente','23','prestación')" maxlength="23">
+        <select class="col-2" name="prestación" id="prestación">
+            <option value='01'>Jubilación</option>
+            <option value='01'>Pensión</option>
+        </select>
+</div>
+<br>
+
+<div class="col-12">
+    <h4 class="títuloSección">Organismo y cargo</h4>
+    <div class="col-4 divSinPadding">
+        <h5 class="tituloPequeño">Organismo</h5>
+        <select style="font-size: large; padding: 10px;" name="Organismo" id="Organismo" class="col-12" aria-placeholder="Ingrese Organismo";>
+            <option value="-"></option>
+            <option value="CSJ">Corte Suprema de Justicia</option>
+            <option value="MPF">Ministerio Público Fiscal</option>
+            <option value="CdM">Consejo de la Magistratura</option>
+            <option value="MPD">Ministerio Público de Defensa</option>
+        </select>
+    </div>
+
+</div>
+<div class="col-12">
+    <div class="col-1 divSinPadding" style="margin-right: 5px;">
+        <h5 class="tituloPequeño">Cod.Cargo</h5>
+        <input class="col-12" type="text" name="" id="cC" onchange="cCC()" placeholder="Ej. 01-01" onkeypress="formatoCódigoCargo()">
+    </div>
+
+    <div class="col-4 divSinPadding" style="margin-right: 15px;">
+        <h5 class="tituloPequeño">Descripción del Cargo</h5>
+        <select name="" id="elegirPorDescCargo" class="col-12" onchange="eligeXCargo()">
+            <option value='60-01'>2DO. JEFE DE DEPARTAMENTO</option>
+            <option value='10-03'>ASESOR PGN</option>
+            <option value='64-04'>AUXILIAR</option>
+            <option value='84-04'>AYUDANTE</option>
+            <option value='45-03'>CONTADOR AUDITOR FIA</option>
+            <option value='07-15'>CONTADOR AUDITOR PGN</option>
+            <option value='16-01'>CURADOR PUBLICO</option>
+            <option value='07-25'>D.P.O.  JUECES Y CAMARAS DE APELACIONES</option>
+            <option value='08-27'>D.P.O. DE TRIB. FEDERALES DE C.A.B.A.</option>
+            <option value='07-27'>D.P.O. JUECES FED. DE 1RA INST. INTERIOR</option>
+            <option value='07-17'>D.P.O. TRIB. FED. DE 1RA Y 2DA INTERIOR</option>
+            <option value='07-31'>DEFENSOR AUXILIAR DE LA DGN</option>
+            <option value='08-03'>DEFENSOR GENERAL ADJUNTO</option>
+            <option value='07-01'>DEFENSOR GENERAL DE LA NACION</option>
+            <option value='07-19'>DEFENSOR PUB. MEN. E INC. DE TRIB.DE 2DA</option>
+            <option value='07-21'>DEFENSOR PUB. MEN. E INC. DE TRIB.ORALES</option>
+            <option value='07-15'>DEFENSOR PUB. O. ADJUNTO DE TRIB.ORALES</option>
+            <option value='07-29'>DEFENSOR PUBL. MEN. E INC. DE 1RA INST.</option>
+            <option value='08-43'>DEFENSOR PUBLICO CURADOR</option>
+            <option value='08-47'>DEFENSOR PUBLICO DE VICTIMAS</option>
+            <option value='07-07'>DEFENSOR PUBLICO OFICIAL ADJUNTO CNCP</option>
+            <option value='07-23'>DEFENSOR PUBLICO OFICIAL ADJUNTO DE DGN</option>
+            <option value='07-05'>DEFENSOR PUBLICO OFICIAL ANTE LA CNCP</option>
+            <option value='07-09'>DEFENSOR PUBLICO OFICIAL DE LA DGN</option>
+            <option value='07-13'>DEFENSOR PUBLICO OFICIAL DE TRIB. ORALES</option>
+            <option value='08-41'>DEFENSOR PUBLICO TUTOR</option>
+            <option value='35-01'>DIRECTOR GENERAL</option>
+            <option value='35-01'>DIRECTOR GENERAL</option>
+            <option value='35-02'>DIRECTOR MEDICO</option>
+            <option value='84-01'>ENCARGADO DE SECCION</option>
+            <option value='64-02'>ESCRIBIENTE</option>
+            <option value='64-03'>ESCRIBIENTE AUXILIAR</option>
+            <option value='06-95'>FISC ADJ FISC 1°INST</option>
+            <option value='05-04'>FISC ANTE J. 1° INST</option>
+            <option value='07-27'>FISC AUX FISC 1°INST</option>
+            <option value='15-06'>FISC FIA</option>
+            <option value='05-07'>FISC GRAL ADJ CNACCF</option>
+            <option value='15-05'>FISC GRAL ADJ PGN</option>
+            <option value='07-01'>FISC GRAL ADJ PGT</option>
+            <option value='05-12'>FISC GRAL ANTE CFCP</option>
+            <option value='05-06'>FISC GRAL ANTE TO</option>
+            <option value='06-40'>FISC GRAL CFA</option>
+            <option value='06-35'>FISC GRAL CNA</option>
+            <option value='05-03'>FISC GRAL FIA</option>
+            <option value='15-02'>FISC GRAL PGN</option>
+            <option value='05-09'>FISCAL AUXILIAR PGN</option>
+            <option value='05-08'>FISCAL DE LA PGN</option>
+            <option value='05-02'>FISCAL GRAL</option>
+            <option value='03-02'>FISCAL GRAL PGT</option>
+            <option value='05-01'>FISCAL NAC. FIA</option>
+            <option value='84-10'>INTENDENTE ED Y MOV</option>
+            <option value='55-01'>JEFE DE DEPARTAMENTO</option>
+            <option value='63-90'>JEFE DE DESPACHO</option>
+            <option value='55-03'>JEFE DE DESPACHO</option>
+            <option value='84-00'>JEFE DE SECCION</option>
+            <option value='01-03'>JUEZ DE 1RA.INSTANCIA</option>
+            <option value='01-02'>JUEZ DE CAMARA</option>
+            <option value='01-06'>JUEZ DE CAMARA DE CASACION</option>
+            <option value='01-01'>JUEZ DE LA CORTE SUPREMA</option>
+            <option value='84-03'>MEDIO OFICIAL</option>
+            <option value='64-01'>OFICIAL</option>
+            <option value='84-02'>OFICIAL DE SERVICIO</option>
+            <option value='64-00'>OFICIAL MAYOR</option>
+            <option value='45-07'>PERITO</option>
+            <option value='45-08'>PERITO ABOGADO</option>
+            <option value='45-04'>PERITO CALIGRAFO</option>
+            <option value='45-03'>PERITO CONTADOR</option>
+            <option value='45-01'>PERITO MEDICO</option>
+            <option value='45-02'>PERITO QUIMICO</option>
+            <option value='03-03'>PROC FISCAL CSJN</option>
+            <option value='03-01'>PROC GRAL DE LA NAC</option>
+            <option value='30-10'>PROSEC LET DE PGT</option>
+            <option value='30-09'>PROSEC LET FISC GRAL</option>
+            <option value='30-08'>PROSEC LET TRIB ENJ</option>
+            <option value='30-07'>PROSECRETARIO ADMINISTRATIVO</option>
+            <option value='30-04'>PROSECRETARIO DE CAMARA</option>
+            <option value='30-05'>PROSECRETARIO ELECTORAL</option>
+            <option value='30-03'>PROSECRETARIO JEFE</option>
+            <option value='30-02'>PROSECRETARIO LETRADO</option>
+            <option value='15-11'>SEC FISCAL 1A INST</option>
+            <option value='15-20'>SEC GRAL DE LA PGN</option>
+            <option value='15-08'>SEC LETRADO PGT</option>
+            <option value='15-20'>SECRET GRAL DE ADMINISTRACION</option>
+            <option value='15-03'>SECRETARIO CAM.NAC.ELECTORAL</option>
+            <option value='15-18'>SECRETARIO CONTABLE</option>
+            <option value='14-11'>SECRETARIO DE 1RA INSTANCIA</option>
+            <option value='15-07'>SECRETARIO DE CAMARA</option>
+            <option value='14-07'>SECRETARIO DE CAMARA</option>
+            <option value='15-11'>SECRETARIO DE JUZGADO</option>
+            <option value='15-01'>SECRETARIO DE LA CORTE SUPREMA</option>
+            <option value='14-01'>SECRETARIO DE LA DGN</option>
+            <option value='15-21'>SECRETARIO DE LA PGN</option>
+            <option value='15-10'>SECRETARIO ELECTORAL CAPITAL</option>
+            <option value='15-12'>SECRETARIO ELECTORAL INTERIOR</option>
+            <option value='15-17'>SECRETARIO FISC GRAL</option>
+            <option value='15-04'>SECRETARIO LETRADO C.SUPREMA</option>
+            <option value='15-04'>SECRETARIO LETRADO C.SUPREMA</option>
+            <option value='14-04'>SECRETARIO LETRADO DE DGN</option>
+            <option value='15-10'>SECRETARIO LETRADO PGN</option>
+            <option value='40-02'>SUBDIRECTOR ADJUNTO</option>
+            <option value='40-03'>SUBDIRECTOR ADJUNTO</option>
+            <option value='40-01'>SUBDIRECTOR GENERAL</option>
+            <option value='40-01'>SUBDIRECTOR GENERAL</option>
+            <option value='15-19'>SUBINTENDENTE</option>
+            <option value='25-05'>SUBSEC LETRADO</option>
+            <option value='25-04'>SUBSECRETARIO ADMINISTRATIVO</option>
+            <option value='83-01'>SUPERVISOR</option>
+        </select>
+    </div>
+    <div class="col-4 divSinPadding" >
+        <h5 class="tituloPequeño">Fecha de Cese o Fallecimiento</h5>
+        <input id="día" type="text" maxlength="2" style="width: 40px; text-align: center;" onkeyup="autoTab('día','2','mes')">
+        / 
+        <input id="mes" type="text" maxlength="2" style="width: 40px; text-align: center;" onkeyup="autoTab('mes','2','año')">
+        /
+        <input id="año" type="text" style="width: 60px; text-align: center;">
+    </div>
+</div>
+<div class="col-12">
+    <h4 class="títuloSección">
+        Datos del recibo
+    </h4>
+    <div class="col-1 divSinPadding" style="margin-right: 5px;">
+        <h5 class="tituloPequeño">Concepto</h5>
+        <input class="col-12" type="text" name="" id="conceptoRecibo" onchange="hacerMagia(document.getElementById('conceptoRecibo').value)" placeholder="Ej. 101">
+    </div>
+    <div class="col-1 divSinPadding" style="margin-right: 5px;">
+        <h5 class="tituloPequeño">Conc. Anses</h5>
+        <input class="col-12" type="text" name="" id="conceptoAnses" onchange="hacerMagia2(document.getElementById('conceptoAnses').value)" placeholder="Ej. 001-050">
+    </div>
+    <div class="col-4 divSinPadding" style="margin-right: 5px;">
+        <h5 class="tituloPequeño">Descripción concepto</h5>
+        <input style="text-align: left;" class="col-12" type="text" name="" id="descConcepto" onchange="">
+    </div>
+    <div class="col-1 divSinPadding" style="margin-right: 5px;">
+        <h5 class="tituloPequeño">Importe</h5>
+        <input class="col-12" type="text" name="" id="importeMagis" onchange="" >
+    </div>
+    <div class="col-1 divSinPadding" style="margin-right: 5px; margin-bottom: 15px;">
+        <h5 id="contador" style="color: white;" class="tituloPequeño">0</h5>
+
+    <button id="okCargaConcepto" class="buttonAlto" onclick="agregaConceptos(document.getElementById('conceptoRecibo').value,document.getElementById('descConcepto').value,document.getElementById('conceptoAnses').value, document.getElementById('importeMagis').value,document.getElementById('importeMagis').value*0.82)" >Ok</button>
+    </div>
+
+    <br>
+    <br>
+
+        <table id="detalleLiquidación" border="2">
+            <tbody>
+            <tr>
+                <th style="width: 12%;">Código</th>
+                <th style="width: 50%;">Descripción</th>
+                <th style="width: 12%;">Concepto</th>
+                <th style="width: 12%;">Monto</th>
+                <th style="width: 12%;">82%</th>
+            </tr>
+            </tbody>
+        </table>
+        <div class="col-12">
+            <h4 class="títuloSección">
+                Información de la liquidación
+            </h4>
+            <div class="col12">
+                <h5 class="tituloPequeño">Fecha hasta retroactivo</h5>
+                <input id="hDía" type="text" maxlength="2" style="width: 40px; text-align: center;" onkeyup="autoTab('hDía','2','hMes')">
+                / 
+                <input id="hMes" type="text" maxlength="2" style="width: 40px; text-align: center;" onkeyup="autoTab('hMes','2','hAño')">
+                /
+                <input id="hAño" type="text" style="width: 60px; text-align: center;">
+            </div>
+        </div>
+        <button onclick="liquidarTablaMagis(document.getElementById('mes').value,document.getElementById('año').value, document.getElementById('hMes').value, document.getElementById('hAño').value)" >Ver liquidación</button>
+    <section id='tablaLiqMagis'>
+
+    </section>
+    <button onclick="exportTableToExcel('tabla')">Exportar a Excel</button>
+    <button onclick="document.location.reload()">Borrar todo</button>
+    <div>Fin</div>
+</body>
+</html>
