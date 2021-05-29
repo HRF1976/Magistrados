@@ -426,14 +426,18 @@ var cantFilas = nFin-nro+3
     do {
         monto=document.getElementById('detalleLiquidación').rows[cuenta].cells[4].textContent / 30 *(31 - document.getElementById('día').value);
         document.getElementById("tabla").rows[1].cells[columnas+1].textContent= monto.toFixed(2);
-        total=total+monto
         cuenta=cuenta+1
         columnas=columnas+1  
         } while (counter>columnas);
-        document.getElementById("tabla").rows[1].cells[counter+1].textContent= total.toFixed(2);
+        columnas=1;
+        do {
+            total=total+ parseFloat(document.getElementById('detalleLiquidación').rows[columnas].cells[4].textContent);
+            columnas=columnas+1
+        } while (counter>columnas-1);
+        console.log(total)        
         var per=document.getElementById('año').value+document.getElementById('mes').value+'01'
         var nroPer=nPer.indexOf(per)
-        var OS=parseInt(haberMin[nroPer])/30*(31-document.getElementById('día').value)*0.03+(total-parseInt(haberMin[nroPer]))*0.06;
+        var OS=(parseInt(haberMin[nroPer])*0.03+(total-parseInt(haberMin[nroPer]))*0.06)/30*(31-document.getElementById('día').value);
         document.getElementById("tabla").rows[1].cells[counter+2].textContent= OS.toFixed(2);
         document.getElementById("tabla").rows[1].cells[0].textContent= document.getElementById('día').value+'/'+document.getElementById('mes').value+'/'+document.getElementById('año').value;
         
@@ -450,17 +454,17 @@ var cantFilas = nFin-nro+3
     do {
         monto=document.getElementById('detalleLiquidación').rows[cuenta].cells[4].textContent *coeficientesMagistrados[nro];
         document.getElementById("tabla").rows[fila].cells[columnas+1].textContent= monto.toFixed(2);
-        total=total+monto
-        cuenta=cuenta+1
-        columnas=columnas+1  
+        total=total+monto;
+        cuenta=cuenta+1;
+        columnas=columnas+1;  
 
     } while (counter>columnas);
     OS=parseInt(haberMin[nroPer])*0.03+(total-parseInt(haberMin[nroPer]))*0.06;
-    document.getElementById("tabla").rows[fila].cells[counter+2].textContent= OS.toFixed(2);
-    document.getElementById("tabla").rows[fila].cells[counter+1].textContent= total.toFixed(2);
+        document.getElementById("tabla").rows[fila].cells[counter+2].textContent= OS.toFixed(2);
     document.getElementById("tabla").rows[fila].cells[0].textContent= '01/'+per.substring(4,6)+'/'+per.substring(0,4);
 
     //loop para el resto
+    // fila=3
     total=0
     do {
 
@@ -483,6 +487,33 @@ var cantFilas = nFin-nro+3
     total=0
     } while (fila<cantFilas-1)
 
+
+    //columna total x mes y o.s.
+    total=0
+    columnas=1
+    fila=1
+    do {
+        for (var i = 1; i < counter+1; i++) {    
+            total= total + parseFloat(document.getElementById("tabla").rows[fila].cells[i].textContent);
+        }
+        document.getElementById("tabla").rows[fila].cells[counter+1].textContent= total.toFixed(2);
+        fila=fila+1
+        total=0
+    }
+    while (fila<cantFilas)
+
+    per=document.getElementById('año').value+document.getElementById('mes').value+'01'
+    nroPer=nPer.indexOf(per)+1
+    fila=2
+    do{
+        total=document.getElementById('tabla').rows[fila].cells[counter+1].textContent;
+        OS=parseInt(haberMin[nroPer])*0.03+(total-parseInt(haberMin[nroPer]))*0.06;
+        document.getElementById('tabla').rows[fila].cells[counter+2].textContent=OS.toFixed(2)
+        fila=fila+1
+        nroPer=nroPer+1
+    } while (fila<cantFilas)
+
+
     // ultima fila totales
     total=0
     columnas=1
@@ -495,4 +526,15 @@ var cantFilas = nFin-nro+3
         document.getElementById("tabla").rows[cantFilas-1].cells[columnas].textContent= total.toFixed(2);
         columnas=columnas+1;
     } while (counter>columnas-3)
+
+    
+    // //ahora el total de la obra social
+    // total=0
+    // fila=1
+    // do{
+    //     total=total+document.getElementById('tabla').rows[fila].cells[counter+2].textContent;
+    //     fila=fila+1;
+    // }
+    // while(fila<cantFilas-1);
+    // document.getElementById('tabla').rows[fila].cells[counter+2].textContent=total.toFixed(2)
 }
