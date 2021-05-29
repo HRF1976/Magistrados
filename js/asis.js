@@ -299,14 +299,22 @@ function confirmaImporte (concepto,nPer,cargo) {
     var importe=tablaCombinadaMagis[item];
     var number=nPerMagistrados.indexOf(nPer)+1;   
     var cont=0;
-
-    do {
-        importe=importe*coeficientesMagistrados[cont];
-        cont=cont+1;
+    console.log(importe)
+    if (concepto==101 || concepto==110 || concepto==108 || concepto==120 || concepto==107 || concepto==157 || concepto==105 || concepto==115) {
+        do {
+            importe=importe*coeficientesMagistrados[cont];
+            cont=cont+1;
+        }
+        while(number>cont);
+            
+    } else {
+        importe= parseFloat(prompt('El concepto no está en las acordadas, por favor ingrese el valor del recibo'))         
     }
-    while(number>cont);
-    // number=new Intl.NumberFormat("de-DE").format(importe.toFixed(2));
+    
+        // number=new Intl.NumberFormat("de-DE").format(importe.toFixed(2));
     document.getElementById('importeMagis').value=importe.toFixed(2);
+    console.log(importe)
+    
 }
 
 function hacerMagia(concepto) {
