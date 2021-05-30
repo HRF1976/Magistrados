@@ -310,10 +310,11 @@ function confirmaImporte (concepto,nPer,cargo) {
     } else {
         importe= parseFloat(prompt('El concepto no está en las acordadas, por favor ingrese el valor del recibo'))         
     }
-    
+    if (document.getElementById('prestación').value=="02") {
+        importe=importe * 0.7; //si es pensión hace el 70%
+    }
         // number=new Intl.NumberFormat("de-DE").format(importe.toFixed(2));
     document.getElementById('importeMagis').value=importe.toFixed(2);
-    console.log(importe)
     
 }
 
@@ -363,7 +364,7 @@ function agregaConceptos(código,descripción,concepto,monto,porcentaje) {
 }
 //-----------------------------------------------------------------------
 function liquidarTablaMagis (mes,año,mHasta,aHasta) {
-
+document.getElementById('realizarLiquidación').style.visibility="visible";
 var fechaDesde=año+mes+"01"
 var fechaHasta=aHasta+mHasta+"01"
 var nro=nPerMagistrados.indexOf(fechaDesde)

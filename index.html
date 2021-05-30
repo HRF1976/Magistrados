@@ -23,7 +23,7 @@
         <input type="text" class="col-3" id="expediente" placeholder="Ingrese nro de expediente" style="text-align: left; margin-right: 5px; font-size: medium;" onkeypress="formatoExpediente()" onkeyup="autoTab('expediente','23','prestación')" maxlength="23">
         <select class="col-2" name="prestación" id="prestación">
             <option value='01'>Jubilación</option>
-            <option value='01'>Pensión</option>
+            <option value='02'>Pensión</option>
         </select>
 </div>
 <br>
@@ -223,11 +223,12 @@
             </div>
         </div>
         <button onclick="liquidarTablaMagis(document.getElementById('mes').value,document.getElementById('año').value, document.getElementById('hMes').value, document.getElementById('hAño').value)" >Ver liquidación</button>
-    <section id='tablaLiqMagis'>
+        <button onclick="document.location.reload()">Borrar todo</button>
+        <section id='tablaLiqMagis'>
 
     </section>
-    <button onclick="exportTableToExcel('tabla')">Exportar a Excel</button>
-    <button onclick="document.location.reload()">Borrar todo</button>
+    <button id="realizarLiquidación" onclick="exportTableToExcel('tabla')" style="visibility: hidden;" >Exportar a Excel</button>
+
  
 </body>
  
