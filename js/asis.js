@@ -452,7 +452,14 @@ var cantFilas = nFin-nro+3
     var nro=nPerMagistrados.indexOf(per)
     columnas=0
     do {
-        monto=document.getElementById('detalleLiquidación').rows[cuenta].cells[4].textContent *coeficientesMagistrados[nro];
+        var conceptoDeAnses=document.getElementById('detalleLiquidación').rows[cuenta].cells[2].textContent;
+        if (conceptoDeAnses=="001060" || conceptoDeAnses=="001061" || conceptoDeAnses=="001069" || conceptoDeAnses=="001072") {   
+            monto= parseFloat(document.getElementById('detalleLiquidación').rows[cuenta].cells[4].textContent);
+                        
+        } else {
+            monto=document.getElementById('detalleLiquidación').rows[cuenta].cells[4].textContent *coeficientesMagistrados[nro];
+        }
+
         document.getElementById("tabla").rows[fila].cells[columnas+1].textContent= monto.toFixed(2);
         total=total+monto;
         cuenta=cuenta+1;
@@ -469,14 +476,19 @@ var cantFilas = nFin-nro+3
     do {
 
         do{
-        document.getElementById("tabla").rows[fila].cells[columnas+1].textContent= (document.getElementById("tabla").rows[fila-1].cells[columnas+1].textContent * coeficientesMagistrados[nro]).toFixed(2);
-        total = total + document.getElementById("tabla").rows[fila-1].cells[columnas+1].textContent * coeficientesMagistrados[nro]
+            conceptoDeAnses=document.getElementById('tabla').rows[0].cells[columnas+1].textContent;
+            if (conceptoDeAnses=="001060" || conceptoDeAnses=="001061" || conceptoDeAnses=="001069" || conceptoDeAnses=="001072") {
+                document.getElementById("tabla").rows[fila].cells[columnas+1].textContent= parseFloat(document.getElementById("tabla").rows[fila-1].cells[columnas+1].textContent);
+
+            } else {
+                document.getElementById("tabla").rows[fila].cells[columnas+1].textContent= (document.getElementById("tabla").rows[fila-1].cells[columnas+1].textContent * coeficientesMagistrados[nro]).toFixed(2);                
+            }
+        
         columnas=columnas+1
         
         } while (counter>columnas)
     OS=parseInt(haberMin[nroPer])*0.03+(total-parseInt(haberMin[nroPer]))*0.06;
     document.getElementById("tabla").rows[fila].cells[counter+2].textContent= OS.toFixed(2);
-    document.getElementById("tabla").rows[fila].cells[counter+1].textContent= total.toFixed(2);
     document.getElementById("tabla").rows[fila].cells[0].textContent= '01/'+per.substring(4,6)+'/'+per.substring(0,4);
 
     nro=nro+1
