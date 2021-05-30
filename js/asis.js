@@ -526,15 +526,20 @@ var cantFilas = nFin-nro+3
         document.getElementById("tabla").rows[cantFilas-1].cells[columnas].textContent= total.toFixed(2);
         columnas=columnas+1;
     } while (counter>columnas-3)
+        
+    //--------------corregir decimales con punto
+    total=0
+    columnas=1
 
+    do {
+        total=0;
+        for (var i = 1; i < cantFilas; i++) {    
+            total= document.getElementById("tabla").rows[i].cells[columnas].textContent;
+            total=new Intl.NumberFormat("de-DE").format(total);
+            document.getElementById("tabla").rows[i].cells[columnas].textContent=total;
+        }
+        columnas=columnas+1;
+    } while (counter>columnas-3)
     
-    // //ahora el total de la obra social
-    // total=0
-    // fila=1
-    // do{
-    //     total=total+document.getElementById('tabla').rows[fila].cells[counter+2].textContent;
-    //     fila=fila+1;
-    // }
-    // while(fila<cantFilas-1);
-    // document.getElementById('tabla').rows[fila].cells[counter+2].textContent=total.toFixed(2)
+    // number=new Intl.NumberFormat("de-DE").format(importe.toFixed(2));
 }
